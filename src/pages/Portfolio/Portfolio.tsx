@@ -3,44 +3,50 @@ import { ReactComponent as ProfileIcon } from 'assets/images/profile-icon.svg'
 import { ReactComponent as Chart1 } from 'assets/images/Chart1.svg';
 import { ReactComponent as Chart2 } from 'assets/images/Chart2.svg';
 import { ReactComponent as Chart3 } from 'assets/images/Chart3.svg';
+import { ReactComponent as Company1 } from 'assets/images/company1.svg';
+import { ReactComponent as Company2 } from 'assets/images/company2.svg';
+import { ReactComponent as Company3 } from 'assets/images/company3.svg';
 
 interface PortfolioItemProps {
     stock: string;
     quantity: number;
     price: number;
     change: number;
+    company: JSX.Element;
     chart: JSX.Element;
 }
 
 const portfolioItems = [
     {
-        stock: "A 기업",
-        quantity: 10,
-        price: 100,
-        change: 10,
+        stock: "메이드인피플",
+        quantity: 80,
+        price: 1000,
+        change: -5,
+        company: <Company1 className='w-12 h-12 rounded-full' />,
         chart: <Chart1 />
     },
     {
-        stock: "B 기업",
+        stock: "솔티드",
         quantity: 10,
-        price: 210,
-        change: 5,
+        price: 220,
+        change: 3,
+        company: <Company2 className='w-12 h-12 rounded-full' />,
         chart: <Chart2 />
     },
     {
-        stock: "C 기업",
-        quantity: 10,
-        price: 1500,
-        change: 3,
+        stock: "이엠 코어텍",
+        quantity: 17,
+        price: 500,
+        change: 5,
+        company: <Company3 className='w-12 h-12 rounded-full' />,
         chart: <Chart3 />
     },
 ]
-
-const PortfolioItem = ({ stock, quantity, price, change, chart }: PortfolioItemProps) => {
+const PortfolioItem = ({ stock, quantity, price, change, company, chart }: PortfolioItemProps) => {
     return (
         <div className="bg-white p-2 flex gap-2 justify-between">
-            <div className="rounded-full">
-                <img className="rounded-full" src="https://via.placeholder.com/48" alt="stock" />
+            <div className="rounded-full w-12 h-12">
+                {company}
             </div>
             <div>
                 {stock}
@@ -51,7 +57,7 @@ const PortfolioItem = ({ stock, quantity, price, change, chart }: PortfolioItemP
                 {chart}
             </div>
             <div className="flex flex-col">
-                <span>${price}</span>
+                <span>￦{price}</span>
                 <span>{change}%</span>
             </div>
         </div>
